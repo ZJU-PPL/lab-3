@@ -1,0 +1,8 @@
+(test
+ (name test)
+ (libraries lab3 base)
+ (modules test))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

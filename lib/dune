@@ -1,0 +1,28 @@
+(ocamllex lexer)
+
+(menhir
+ (modules token)
+ (flags --only-tokens))
+
+(menhir
+ (modules parser token)
+ (merge_into parser)
+ (flags --external-tokens Token --dump --explain --unused-tokens))
+
+(menhir
+ (modules typeparser token)
+ (merge_into typeparser)
+ (flags --external-tokens Token --dump --explain --unused-tokens))
+
+(library
+ (public_name lab3)
+ (name lab3)
+ (libraries base)
+ (modules info util token
+  lexer parser typeparser
+  syntax type infer fresh
+  display))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

@@ -1,0 +1,9 @@
+(executable
+ (public_name lab3)
+ (name main)
+ (libraries lab3)
+ (modes byte))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A -g))))

@@ -66,3 +66,4 @@ Note : Currently, only simplified Chinese version(of course, with some academic 
 第二部分 13 个测试点。
 带有 (+) 前缀的为正向测试点，在这些测试点中，你需要推导出一个正确的类型。
 带有 (-) 前缀的为反向测试点，在这些测试点中，你需要抛出异常。具体请见 `infer.ml`。
+

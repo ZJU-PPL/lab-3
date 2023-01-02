@@ -1,5 +1,4 @@
 # PPL Lab3
-Note : Currently, only simplified Chinese version(of course, with some academic words in English) is available.
 
 ## 实验要求
 请在实验前阅读本文件, 以免错过重要信息.
@@ -67,3 +66,70 @@ Note : Currently, only simplified Chinese version(of course, with some academic 
 带有 (+) 前缀的为正向测试点，在这些测试点中，你需要推导出一个正确的类型。
 带有 (-) 前缀的为反向测试点，在这些测试点中，你需要抛出异常。具体请见 `infer.ml`。
 
+
+## Experiment requirements
+Please read this document before writing any code so you will not miss important information.
+
+In this lab, you will implement a Hindley-Milner type inference algorithm in OCaml.
+The comments in the code file are enough to help you complete the experiment, if you have any questions, please contact us.
+
+## Project structure
+Files under `lib/`:
+- `info.ml`
+     You should put your **personal information** here.
+- `infer.ml`
+     You should implement a Hindley-Milner type inference algorithm here.
+- `syntax.ml`
+     You can familiarize yourself with the language we use this time by looking at this file
+     This file also contains many printing functions that you can use.
+- `type.ml`
+     You can see some of the structures we care about in this experiment by looking at this file
+     This file also contains many printing functions that you can use.
+- `fresh.ml`
+     Used to generate new type variables.
+- `util.ml`
+     Contains two practical operators that can easily convert strings to types or expressions.
+- `token.mly` `lexer.mll` `parser.mly` `typeparser.mly` `display.ml`
+     This is the helper function library provided by the TA, you **don't** need to care about the implementation of this part of the code.
+     If necessary, you can read the function name and use `dune utop` to see the type of the corresponding function.
+
+## Experiment composition
+The experiment has two parts, where the latter part depends on the former part:
+1. Simple type inference, `infer.ml:Infer_no_let`
+2. Complete HM type inference with `let polymorphism` `infer.ml:Infer`
+
+For lab instructions only, you should read the notes in the file in the following order:
+1. `info.ml` fill in personal information
+2. `syntax.ml` understands the grammar of term
+3. `type.ml` understands the structure of type, substitution, consstr, type scheme, context
+4. `infer.ml` implements type inference algorithm
+
+
+## Debugging Guide
+
+In this experiment, you can use `dune exec lab3` or `dune test` to execute `bin/main.ml` or `test/test.ml` as the entry point respectively. If you want to use OCaml Debugger, the former is recommended.
+
+### How to print
+This experiment provides a lot of auxiliary pretty print functions, which may help your debugging. These functions are in two categories, the `print_*` functions directly outputs to `stdout` and returns the `unit` type; the `show_*` functions returns a `string`.
+Specifically, you can directly use
+- `*_ty`: print a type in its human-readable format
+- `*_constr`: print a type constraint in human-readable format
+- `*_subst`: print a type substitution in human-readable format
+- `*_constrs`: print list of type constraints in human-readable format
+- `*_substs`: print list of type substitutions in human-readable format
+- `*_expr`: print an expression in human-readable format (where lambda abstraction is shown as `\x.e`)
+- `*_expr_in_ocaml`: print an expression in human-readable format (where lambda abstraction appears as `fun x -> e`). If you're not sure about the type of an expr, you can use the print function, which put the string of expr into utop and uses OCaml's type inference to help you figure out the correct type.
+
+### OCaml Debugger 
+
+The specific usage method of OCaml Debugger is not provided here, you can check the [help content here](https://ocaml.org/docs/debugging#the-ocaml-debugger). For now, OCaml Debugger has no integrated plug-ins with IDE or VSCode, so it is not convenient to use.
+For your convenience to use `ocamldebug`, we enabled the bytecode mode (to prevent dune from modifying some function symbols) in the bin part of lab-3 . After you `dune build`, you can start debugging with the `ocamldebug _build/default/bin/main.bc` command.
+
+
+## Scoring details
+
+There are 50 test cases, you get 2 points after passing each test case.
+The first part has 37 test cases.
+The second part has 13 test cases.
+The test cases prefixed with (+) are positive cases where you need to infer a correct type.
+The test cases prefixed with (-) are negative cases where you need to throw an exception. See `infer.ml` for details.

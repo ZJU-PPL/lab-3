@@ -93,7 +93,7 @@ Files under `lib/`:
      This is the helper function library provided by the TA, you **don't** need to care about the implementation of this part of the code.
      If necessary, you can read the function name and use `dune utop` to see the type of the corresponding function.
 
-## Experiment composition
+## What to do
 The experiment has two parts, where the latter part depends on the former part:
 1. Simple type inference, `infer.ml:Infer_no_let`
 2. Complete HM type inference with `let polymorphism` `infer.ml:Infer`
@@ -105,11 +105,11 @@ For lab instructions only, you should read the notes in the file in the followin
 4. `infer.ml` implements type inference algorithm
 
 
-## Debugging Guide
+## How to debug
 
 In this experiment, you can use `dune exec lab3` or `dune test` to execute `bin/main.ml` or `test/test.ml` as the entry point respectively. If you want to use OCaml Debugger, the former is recommended.
 
-### How to print
+### Pretty print functions
 This experiment provides a lot of auxiliary pretty print functions, which may help your debugging. These functions are in two categories, the `print_*` functions directly outputs to `stdout` and returns the `unit` type; the `show_*` functions returns a `string`.
 Specifically, you can directly use
 - `*_ty`: print a type in its human-readable format
